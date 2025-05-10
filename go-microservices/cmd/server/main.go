@@ -1,14 +1,23 @@
-// Entrypoint 
+// Entrypoint
 package main
 
 import (
 	"fmt"
 	"go-microservices/db"
 	"go-microservices/routes"
+	"log"
 	"os"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
+
+func init() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal(".env file not found or failed to load")
+	}
+}
 
 func main() {
 	port := os.Getenv("PORT")
